@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Screen Fusion Productions</title>
+  <meta name="description" content="Screen Fusion Productions creates cinematic photography, videography and digital media stories for people, brands and businesses." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --black: #000000;
+      --dark: #090909;
+      --charcoal: #141414;
+      --white: #ffffff;
+      --soft-white: #f2f2f2;
+      --muted: #b8b8b8;
+      --magenta: #EC268F;
+      --purple: #7B3197;
+      --violet: #663399;
+      --orange: #F69546;
+      --gradient: linear-gradient(135deg, #EC268F 0%, #7B3197 55%, #663399 100%);
+      --max-width: 1180px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Lato', sans-serif;
+      background: var(--black);
+      color: var(--white);
+      line-height: 1.6;
+    }
+
+    img, video, iframe {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .site-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 50;
+      background: rgba(0, 0, 0, 0.72);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .nav {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 18px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      letter-spacing: 0.08em;
+      text-transform: lowercase;
+    }
+
+    .brand-mark {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: var(--gradient);
+      display: grid;
+      place-items: center;
+      font-weight: 900;
+      font-size: 18px;
+    }
+
+    .brand-text strong {
+      font-weight: 900;
+    }
+
+    .brand-text span {
+      display: block;
+      font-size: 10px;
+      letter-spacing: 0.42em;
+      text-transform: uppercase;
+      margin-top: -5px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      font-size: 13px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .nav-links a:hover {
+      color: var(--white);
+    }
+
+    .hero {
+      min-height: 100vh;
+      position: relative;
+      display: grid;
+      align-items: center;
+      overflow: hidden;
+      padding: 140px 24px 90px;
+      background:
+        radial-gradient(circle at 20% 30%, rgba(236, 38, 143, 0.28), transparent 34%),
+        radial-gradient(circle at 70% 60%, rgba(123, 49, 151, 0.25), transparent 38%),
+        var(--black);
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, rgba(0,0,0,0.9), rgba(0,0,0,0.54), rgba(0,0,0,0.9));
+      z-index: 1;
+    }
+
+    .hero-video-placeholder {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(rgba(0,0,0,0.18), rgba(0,0,0,0.72)),
+        url('images/hero-still.jpg') center/cover no-repeat;
+      opacity: 0.38;
+      transform: scale(1.04);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: var(--max-width);
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      gap: 10px;
+      align-items: center;
+      color: var(--soft-white);
+      font-size: 13px;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+    }
+
+    .eyebrow::before {
+      content: '';
+      width: 42px;
+      height: 2px;
+      background: var(--gradient);
+    }
+
+    .hero h1 {
+      max-width: 850px;
+      font-size: clamp(48px, 8vw, 108px);
+      line-height: 0.95;
+      font-weight: 300;
+      letter-spacing: -0.045em;
+      margin-bottom: 28px;
+    }
+
+    .hero h1 strong {
+      font-weight: 900;
+    }
+
+    .gradient-text {
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero p {
+      max-width: 650px;
+      color: var(--soft-white);
+      font-size: clamp(18px, 2vw, 23px);
+      font-weight: 300;
+      margin-bottom: 34px;
+    }
+
+    .button-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 0 22px;
+      border-radius: 999px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-size: 12px;
+      border: 1px solid rgba(255,255,255,0.22);
+      transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      border-color: rgba(255,255,255,0.55);
+    }
+
+    .btn-primary {
+      background: var(--gradient);
+      border: none;
+    }
+
+    .section {
+      padding: 105px 24px;
+    }
+
+    .section.alt {
+      background: var(--dark);
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    .section-heading {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 40px;
+      align-items: start;
+      margin-bottom: 48px;
+    }
+
+    .section-label {
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.24em;
+      color: var(--magenta);
+      font-weight: 700;
+    }
+
+    .section-heading h2 {
+      font-size: clamp(34px, 5vw, 62px);
+      line-height: 1.04;
+      font-weight: 300;
+      letter-spacing: -0.035em;
+    }
+
+    .section-heading h2 strong {
+      font-weight: 900;
+    }
+
+    .lead {
+      color: var(--muted);
+      font-size: 19px;
+      max-width: 760px;
+      margin-top: 18px;
+    }
+
+    .showreel-frame {
+      position: relative;
+      aspect-ratio: 16 / 9;
+      border-radius: 28px;
+      overflow: hidden;
+      background: var(--charcoal);
+      border: 1px solid rgba(255,255,255,0.12);
+      box-shadow: 0 30px 100px rgba(236, 38, 143, 0.18);
+    }
+
+    .showreel-frame iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .card {
+      min-height: 260px;
+      padding: 28px;
+      border-radius: 24px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.07), rgba(255,255,255,0.025));
+      border: 1px solid rgba(255,255,255,0.1);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .card-number {
+      color: var(--magenta);
+      font-size: 13px;
+      letter-spacing: 0.18em;
+    }
+
+    .card h3 {
+      font-size: 24px;
+      line-height: 1.1;
+      margin: 28px 0 14px;
+    }
+
+    .card p {
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .portfolio-item {
+      position: relative;
+      min-height: 340px;
+      border-radius: 26px;
+      overflow: hidden;
+      background: var(--charcoal);
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .portfolio-item::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 30%, rgba(0,0,0,0.86));
+      z-index: 1;
+    }
+
+    .portfolio-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      position: absolute;
+      inset: 0;
+      opacity: 0.78;
+      transition: transform 0.4s ease, opacity 0.4s ease;
+    }
+
+    .portfolio-item:hover img {
+      transform: scale(1.05);
+      opacity: 0.95;
+    }
+
+    .portfolio-caption {
+      position: absolute;
+      z-index: 2;
+      bottom: 24px;
+      left: 24px;
+      right: 24px;
+    }
+
+    .portfolio-caption span {
+      color: var(--magenta);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      font-weight: 700;
+    }
+
+    .portfolio-caption h3 {
+      font-size: 26px;
+      margin-top: 6px;
+    }
+
+    .about-panel {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      align-items: stretch;
+    }
+
+    .about-text {
+      padding: 44px;
+      border-radius: 28px;
+      background: var(--white);
+      color: var(--black);
+    }
+
+    .about-text h2 {
+      font-size: clamp(34px, 5vw, 58px);
+      line-height: 1;
+      font-weight: 300;
+      letter-spacing: -0.04em;
+      margin-bottom: 24px;
+    }
+
+    .about-text h2 strong {
+      font-weight: 900;
+    }
+
+    .about-text p {
+      color: #333;
+      font-size: 18px;
+      margin-bottom: 18px;
+    }
+
+    .about-image {
+      min-height: 520px;
+      border-radius: 28px;
+      overflow: hidden;
+      background: linear-gradient(135deg, rgba(236,38,143,0.9), rgba(102,51,153,0.8));
+      position: relative;
+    }
+
+    .about-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      mix-blend-mode: luminosity;
+      opacity: 0.78;
+    }
+
+    .process {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .process-step {
+      padding: 32px;
+      border-left: 2px solid var(--magenta);
+      background: rgba(255,255,255,0.04);
+      border-radius: 0 22px 22px 0;
+    }
+
+    .process-step h3 {
+      font-size: 23px;
+      margin-bottom: 12px;
+    }
+
+    .process-step p {
+      color: var(--muted);
+    }
+
+    .contact-panel {
+      padding: 58px;
+      border-radius: 32px;
+      background:
+        linear-gradient(rgba(0,0,0,0.72), rgba(0,0,0,0.72)),
+        var(--gradient);
+      text-align: center;
+    }
+
+    .contact-panel h2 {
+      font-size: clamp(38px, 6vw, 72px);
+      line-height: 1;
+      font-weight: 300;
+      letter-spacing: -0.04em;
+      margin-bottom: 18px;
+    }
+
+    .contact-panel h2 strong {
+      font-weight: 900;
+    }
+
+    .contact-panel p {
+      color: var(--soft-white);
+      font-size: 19px;
+      max-width: 680px;
+      margin: 0 auto 30px;
+    }
+
+    .site-footer {
+      padding: 34px 24px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .footer-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 900px) {
+      .nav-links {
+        display: none;
+      }
+
+      .section-heading,
+      .about-panel {
+        grid-template-columns: 1fr;
+      }
+
+      .cards,
+      .portfolio-grid,
+      .process {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 620px) {
+      .hero {
+        padding-top: 120px;
+      }
+
+      .cards,
+      .portfolio-grid,
+      .process {
+        grid-template-columns: 1fr;
+      }
+
+      .about-text,
+      .contact-panel {
+        padding: 32px 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav" aria-label="Main navigation">
+      <a href="#top" class="brand" aria-label="Screen Fusion Productions home">
+        <div class="brand-mark">SF</div>
+        <div class="brand-text">screen<strong>fusion</strong><span>Productions</span></div>
+      </a>
+
+      <div class="nav-links">
+        <a href="#showreel">Showreel</a>
+        <a href="#services">Services</a>
+        <a href="#work">Work</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <!-- Replace this placeholder with a looping compressed hero video later if you want. -->
+      <div class="hero-video-placeholder" aria-hidden="true"></div>
+
+      <div class="hero-content">
+        <div class="eyebrow">Photography · Videography · Storytelling</div>
+        <h1>Where stories and technology <strong class="gradient-text">collide.</strong></h1>
+        <p>Screen Fusion Productions creates cinematic digital media for people, brands and businesses — blending creative vision, technical craft and human connection.</p>
+        <div class="button-row">
+          <a class="btn btn-primary" href="#work">View Work</a>
+          <a class="btn" href="#contact">Start a Project</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="showreel">
+      <div class="container">
+        <div class="section-heading">
+          <div class="section-label">Showreel</div>
+          <div>
+            <h2>Storytelling through <strong>motion.</strong></h2>
+            <p class="lead">Use this space for your strongest reel. Keep it short, cinematic and emotionally engaging.</p>
+          </div>
+        </div>
+
+        <div class="showreel-frame">
+          <!-- Replace VIDEO_ID with your YouTube or Vimeo embed. -->
+          <iframe src="https://www.youtube.com/embed/VIDEO_ID" title="Screen Fusion Productions showreel" allowfullscreen></iframe>
+        </div>
+      </div>
+    </section>
+
+    <section class="section alt" id="services">
+      <div class="container">
+        <div class="section-heading">
+          <div class="section-label">Services</div>
+          <div>
+            <h2>Creative media with a <strong>human centre.</strong></h2>
+            <p class="lead">A focused set of services that positions Screen Fusion as more than a camera operator — a creative partner.</p>
+          </div>
+        </div>
+
+        <div class="cards">
+          <article class="card">
+            <div>
+              <div class="card-number">01</div>
+              <h3>Videography</h3>
+              <p>Cinematic video for businesses, events, brands and personal stories.</p>
+            </div>
+          </article>
+
+          <article class="card">
+            <div>
+              <div class="card-number">02</div>
+              <h3>Photography</h3>
+              <p>Strong imagery for people, venues, products, events and campaigns.</p>
+            </div>
+          </article>
+
+          <article class="card">
+            <div>
+              <div class="card-number">03</div>
+              <h3>Brand Content</h3>
+              <p>Social-first visuals that help brands communicate clearly and confidently.</p>
+            </div>
+          </article>
+
+          <article class="card">
+            <div>
+              <div class="card-number">04</div>
+              <h3>3D & Experimental</h3>
+              <p>Future-facing media using photogrammetry, 3D tools and emerging creative technology.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="work">
+      <div class="container">
+        <div class="section-heading">
+          <div class="section-label">Portfolio</div>
+          <div>
+            <h2>Selected <strong>work.</strong></h2>
+            <p class="lead">Replace these placeholders with your best projects. Fewer strong pieces will look better than lots of average ones.</p>
+          </div>
+        </div>
+
+        <div class="portfolio-grid">
+          <a href="#" class="portfolio-item">
+            <img src="images/project-01.jpg" alt="Project still placeholder" />
+            <div class="portfolio-caption">
+              <span>Videography</span>
+              <h3>Project Title</h3>
+            </div>
+          </a>
+
+          <a href="#" class="portfolio-item">
+            <img src="images/project-02.jpg" alt="Project still placeholder" />
+            <div class="portfolio-caption">
+              <span>Photography</span>
+              <h3>Project Title</h3>
+            </div>
+          </a>
+
+          <a href="#" class="portfolio-item">
+            <img src="images/project-03.jpg" alt="Project still placeholder" />
+            <div class="portfolio-caption">
+              <span>Brand Story</span>
+              <h3>Project Title</h3>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section alt" id="about">
+      <div class="container">
+        <div class="about-panel">
+          <div class="about-text">
+            <h2>Built on image, story and <strong>connection.</strong></h2>
+            <p>Screen Fusion Productions grew from a strong photographic background and a natural eye for visual storytelling.</p>
+            <p>The work is about more than clean visuals. It is about documenting people, places, ideas and perspectives in a way that feels meaningful and memorable.</p>
+            <p>Every project starts with understanding the story, then shaping the right visual approach to bring it to life.</p>
+          </div>
+          <div class="about-image">
+            <img src="images/about-dan.jpg" alt="Screen Fusion creator at work placeholder" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="approach">
+      <div class="container">
+        <div class="section-heading">
+          <div class="section-label">Approach</div>
+          <div>
+            <h2>Creative, collaborative and <strong>clear.</strong></h2>
+            <p class="lead">The process should feel professional, friendly and easy for the client to understand.</p>
+          </div>
+        </div>
+
+        <div class="process">
+          <div class="process-step">
+            <h3>Discover</h3>
+            <p>We talk through your idea, audience, purpose and the feeling the final piece needs to create.</p>
+          </div>
+          <div class="process-step">
+            <h3>Create</h3>
+            <p>We plan, shoot and shape the visuals with attention to story, detail and technical quality.</p>
+          </div>
+          <div class="process-step">
+            <h3>Deliver</h3>
+            <p>You receive polished content ready for web, social, presentation or campaign use.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section alt" id="contact">
+      <div class="container">
+        <div class="contact-panel">
+          <h2>Let’s bring your idea <strong>to life.</strong></h2>
+          <p>Have a project, event, brand story or visual idea in mind? Get in touch and let’s talk through what you want to create.</p>
+          <div class="button-row" style="justify-content:center;">
+            <a class="btn btn-primary" href="mailto:dan@screenfusionproductions.com">Email Screen Fusion</a>
+            <a class="btn" href="tel:+6421956194">Call Dan</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div>© <span id="year"></span> Screen Fusion Productions</div>
+      <div>Videography · Photography · Storytelling</div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
